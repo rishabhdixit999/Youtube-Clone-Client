@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import { RiVideoAddLine } from "react-icons/ri";
 import { BiUserCircle } from "react-icons/bi";
 import { useEffect } from "react";
-import { GoogleLogin } from "react-google-login";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { gapi } from "gapi-script";
 import { Link } from "react-router-dom";
 import { IoMdNotificationsOutline } from "react-icons/io";
@@ -29,7 +29,7 @@ function Navbar({ toggleDrawer,setEditCreateChanelBtn }) {
     function start() {
       gapi.client.init({
         clientId:
-          "565866976001-kogc3n05n90ug8i92r0t40tl8co0fhse.apps.googleusercontent.com",
+          "115026093499-4vpa9jmainvd9kf8ibf5r67i9k3fe1no.apps.googleusercontent.com",
         scope: "email",
       });
     }
@@ -93,9 +93,10 @@ function Navbar({ toggleDrawer,setEditCreateChanelBtn }) {
           </>
         ) : (
           <>
+          <GoogleOAuthProvider>
             <GoogleLogin
               clientId={
-                "565866976001-kogc3n05n90ug8i92r0t40tl8co0fhse.apps.googleusercontent.com"
+                "115026093499-4vpa9jmainvd9kf8ibf5r67i9k3fe1no.apps.googleusercontent.com"
               }
               onSuccess={onSuccess}
               onFailure={onFailure}
@@ -107,6 +108,7 @@ function Navbar({ toggleDrawer,setEditCreateChanelBtn }) {
                 </p>
                )}
              />
+             </GoogleOAuthProvider>
           </>
         )}
       </div>
